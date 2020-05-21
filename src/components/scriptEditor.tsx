@@ -30,12 +30,25 @@ export class ScriptEditor extends React.Component<IScriptEditorProps, IScriptEdi
         });
     };
 
+    onTabKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+        let programTextElement = document.getElementById("programText") as HTMLTextAreaElement;
+        if (e.keyCode == 9 || e.which == 9) {
+            e.preventDefault();
+            var startPos =  programTextElement.selectionStart;
+            var endPos = programTextElement.selectionEnd;
+            programTextElement.value = programTextElement.value.substring(0, startPos)
+                + "\t"
+                + programTextElement.value.substring(endPos);
+            programTextElement.selectionEnd = startPos + 1;
+        }
+    }
+
     render() {
         let content = <div>
             <Card>
                 <Card.Body>
                     <Card.Title>Program</Card.Title>
-                    <Form.Control id="programText" as="textarea" rows={ 20 } />
+                    <Form.Control id="programText" as="textarea" onKeyDown={ this.onTabKeyDown } rows={ 20 } />
                 </Card.Body>
             </Card>
             <Card>
