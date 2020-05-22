@@ -12,7 +12,8 @@ export function convertToC(program: string): string {
         childproc.execSync(kprc_command);
     }
     catch(error) {
-        return error;
+        let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
+        return typed_error.output.join("\n");
     }
 
     const ll_file_path = "/app/tmp/" + id + ".ll";
@@ -21,7 +22,8 @@ export function convertToC(program: string): string {
         childproc.execSync(cbe_command);
     }
     catch(error) {
-        return error;
+        let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
+        return typed_error.output.join("\n");
     }
 
     const out_file_path = "/app/tmp/" + id + ".cbe.c";
@@ -44,7 +46,8 @@ export function executeOutOnly(program: string): string {
         return buffer.toString();
     }
     catch(error) {
-        return error;
+        let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
+        return typed_error.output.join("\n");
     }
 }
 
@@ -59,6 +62,7 @@ export function execute(program: string): string {
         return buffer.toString();
     }
     catch(error) {
-        return error;
+        let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
+        return typed_error.output.join("\n");
     }
 }
