@@ -13,7 +13,7 @@ export function convertToC(program: string): string {
     }
     catch(error) {
         let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
-        return typed_error.output.join("\n");
+        return `${typed_error.output[1]}\n${typed_error.output[2]}`;
     }
 
     const ll_file_path = "/app/tmp/" + id + ".ll";
@@ -23,7 +23,7 @@ export function convertToC(program: string): string {
     }
     catch(error) {
         let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
-        return typed_error.output.join("\n");
+        return `${typed_error.output[1]}\n${typed_error.output[2]}`;
     }
 
     const out_file_path = "/app/tmp/" + id + ".cbe.c";
@@ -47,7 +47,7 @@ export function executeOutOnly(program: string): string {
     }
     catch(error) {
         let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
-        return typed_error.output.join("\n");
+        return `${typed_error.output[1]}\n${typed_error.output[2]}`;
     }
 }
 
@@ -63,6 +63,6 @@ export function execute(program: string): string {
     }
     catch(error) {
         let typed_error = error as childproc.SpawnSyncReturns<Buffer>;
-        return typed_error.output.join("\n");
+        return `${typed_error.output[1]}\n${typed_error.output[2]}`;
     }
 }
