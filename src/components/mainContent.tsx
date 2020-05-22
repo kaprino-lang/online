@@ -1,11 +1,12 @@
 import * as React from "react";
 import { Container, Col, Row } from "react-bootstrap"
 
+import { InformationCard } from "./informationCard"
 import { OutputDisplay } from "./outputDisplay"
 import { ScriptEditor } from "./scriptEditor"
 
 export interface IMainContentProps {
-
+    compilerVersion: string;
 }
 
 export interface IMainContentState {
@@ -57,6 +58,7 @@ export class MainContent extends React.Component<IMainContentProps, IMainContent
                     </Col>
                     <Col>
                         <OutputDisplay text={ this.state.output }></OutputDisplay>
+                        <InformationCard compilerVersion={ this.props.compilerVersion }></InformationCard>
                     </Col>
                 </Row>
             </Container>

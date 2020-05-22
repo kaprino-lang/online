@@ -4,6 +4,6 @@ import * as ReactDOM from "react-dom"
 import { MainContent } from "./mainContent"
 
 ReactDOM.render(
-    <MainContent />,
+    <MainContent compilerVersion="1.0.0" />,
     document.getElementById("main")
 );

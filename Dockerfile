@@ -1,6 +1,6 @@
 FROM capra314cabra/llvm-cbe:latest AS cbe
 
-FROM kaprino/kaprino:latest
+FROM kaprino/kaprino:v1.0.0
 
 WORKDIR /app
 
