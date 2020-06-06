@@ -21,17 +21,6 @@ export class MainContent extends React.Component<IMainContentProps, IMainContent
         };
     }
 
-    escapeHtml(str: string){
-        str = str.replace(/&/g, '&amp;');
-        str = str.replace(/>/g, '&gt;');
-        str = str.replace(/</g, '&lt;');
-        str = str.replace(/"/g, '&quot;');
-        str = str.replace(/'/g, '&#x27;');
-        str = str.replace(/`/g, '&#x60;');
-        str = str.replace(/\n/g, '<br />');
-        return str;
-    }
-
     onExecuteButtonClicked = (text: string, type: string)  => {
         let textEncoded = encodeURIComponent(text);
         fetch(`https://kaprino.herokuapp.com/api/v1?type=${type}&file=${textEncoded}`).then(res => {
