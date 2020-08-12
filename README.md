@@ -17,8 +17,6 @@ You can choose the action from here:
 
 - Run program - Compile your source code and execute the executable.
 
-- Run program (Show command) - Compile your source code and execute the executable. It displays what compiler printed additionally.
-
 - Convert to C - Use [JuliaComputing/llvm-cbe](https://github.com/JuliaComputing/llvm-cbe) to convert LLVM IR which is generated from your source code to C program.
 Note that this is an experimental option.
 

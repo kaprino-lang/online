@@ -1,7 +1,8 @@
 import express from "express"
 import cors from "cors"
 
-import { execute, executeOutOnly, convertToC } from "./src/executeKprc"
+import { convertToC } from "./src/convertToC"
+import { execute } from "./src/execute"
 
 const app: express.Express = express();
 
@@ -19,21 +20,6 @@ router.get('/api/v1', (req: express.Request, res: express.Response) => {
             let file = req.query["file"];
             if (file) {
                 let output = execute(file as string);
-                res.send({
-                    message: "OK.",
-                    output: output
-                });
-            }
-            else {
-                res.send({
-                    message: "Error! Not found file."
-                });
-            }
-        }
-        else if (type == "runonly") {
-            let file = req.query["file"];
-            if (file) {
-                let output = executeOutOnly(file as string);
                 res.send({
                     message: "OK.",
                     output: output
