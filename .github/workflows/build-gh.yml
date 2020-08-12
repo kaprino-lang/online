@@ -1,0 +1,23 @@
+name: Build Github Pages
+
+on:
+  pull_request:
+    branches: [master]
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - run: |
+          npm install
+          npx webpack
+          cp ./html/index.html ./dist/index.html
+        working-directory: ./client
