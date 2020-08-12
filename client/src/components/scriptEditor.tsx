@@ -56,8 +56,7 @@ export class ScriptEditor extends React.Component<IScriptEditorProps, IScriptEdi
                     <Card.Title>Panel</Card.Title>
                     <div style={ { display: "inline-box" } }>
                         <Form.Control id="executeType" as="select" style={ { width: "400px", margin: "20px" } }>
-                            <option value="runonly">Run program</option>
-                            <option value="run">Run program (Show command)</option>
+                            <option value="run">Run program</option>
                             <option value="irtoc">Convert to C</option>
                         </Form.Control>
                         <Button id="executeButton" variant="primary" style={ { margin: "20px" } } onClick={ this.onExecuteButtonClicked }>Execute</Button>
