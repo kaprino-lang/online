@@ -15,11 +15,12 @@ export function execute(program: string): Promise<string> {
             if (err) {
                 resolve(`--Error message--\n${err.message}`);
             }
-            if (stderr) {
-                resolve(`--Error message--\n${stderr}`);
-            }
 
             const executable_path = `/app/tmp/${id}`;
+
+            if (!fs.existsSync(executable_path)) {
+                resolve(`--Error message--\n${stderr}`);
+            }
 
             childproc.exec(executable_path, (err, stdout, stderr) => {
                 if (err) {
