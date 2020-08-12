@@ -19,11 +19,13 @@ router.get('/api/v1', (req: express.Request, res: express.Response) => {
         if (type == "run") {
             let file = req.query["file"];
             if (file) {
-                let output = execute(file as string);
-                res.send({
-                    message: "OK.",
-                    output: output
-                });
+                execute(file as string)
+                    .then((output) => {
+                        res.send({
+                            message: "OK.",
+                            output: output
+                        });
+                    });
             }
             else {
                 res.send({
@@ -34,11 +36,13 @@ router.get('/api/v1', (req: express.Request, res: express.Response) => {
         else if (type == "irtoc") {
             let file = req.query["file"];
             if (file) {
-                let output = convertToC(file as string);
-                res.send({
-                    message: "OK.",
-                    output: output
-                });
+                convertToC(file as string)
+                    .then((output) => {
+                        res.send({
+                            message: "OK.",
+                            output: output
+                        });
+                    });
             }
             else {
                 res.send({
