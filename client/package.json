@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx webpack && copy .\\html\\index.html .\\dist && python -m http.server --directory ./dist 5000"
   },
   "repository": {
     "type": "git",
