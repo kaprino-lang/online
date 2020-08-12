@@ -15,12 +15,14 @@ export function convertToC(program: string): Promise<string> {
             if (err) {
                 resolve(`--Error message--\n${err.message}`);
             }
-            if (stderr) {
-                resolve(`--Error message--\n${stderr}`);
-            }
 
+            const executable_path = `/app/tmp/${id}`;
             const ll_file_path = `/app/tmp/${id}.ll`;
             const cbe_command = `llvm-cbe ${ll_file_path}`;
+
+            if (!fs.existsSync(executable_path)) {
+                resolve(`--Error message--\n${stderr}`);
+            }
 
             childproc.exec(cbe_command, (err, _, stderr) => {
                 if (err) {
