@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 
-import { execute, executeOutOnly, convertToC } from "./src/api/executeKprc"
+import { execute, executeOutOnly, convertToC } from "./src/executeKprc"
 
 const app: express.Express = express();
 

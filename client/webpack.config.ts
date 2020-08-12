@@ -4,7 +4,6 @@ import * as path from "path";
 const rules: webpack.Rule[] = [
     {
         test: /\.ts(x?)$/,
-        exclude: [/node_modules/, path.resolve(process.cwd() + "/src/api")],
         use: [
             {
                 loader: "ts-loader"
