@@ -10,6 +10,7 @@ export interface IMainContentProps {
 }
 
 export interface IMainContentState {
+    isWaiting: boolean;
     output: string;
 }
 
@@ -17,25 +18,32 @@ export class MainContent extends React.Component<IMainContentProps, IMainContent
     constructor(props: IMainContentProps) {
         super(props);
         this.state = {
+            isWaiting: false,
             output: ""
         };
     }
 
     onExecuteButtonClicked = (text: string, type: string)  => {
+        this.setState({
+            isWaiting: true,
+            output: ""
+        });
+
         let textEncoded = encodeURIComponent(text);
         fetch(`https://kaprino.herokuapp.com/api/v1?type=${type}&file=${textEncoded}`).then(res => {
             res.json().then((obj) => {
                 this.setState({
+                    isWaiting: false,
                     output: obj.output
                 });
             });
         }).catch(error => {
             this.setState({
+                isWaiting: false,
                 output: "Error" + error
             });
         });
     }
-
 
     render() {
         let content = <div style={ { width: "80%", margin: "auto" } }>
@@ -46,7 +54,7 @@ export class MainContent extends React.Component<IMainContentProps, IMainContent
                         <ScriptEditor onScriptExecuteButtonClicked={ this.onExecuteButtonClicked }></ScriptEditor>
                     </Col>
                     <Col>
-                        <OutputDisplay text={ this.state.output }></OutputDisplay>
+                        <OutputDisplay text={ this.state.output } isWaiting={ this.state.isWaiting }></OutputDisplay>
                         <InformationCard compilerVersion={ this.props.compilerVersion }></InformationCard>
                     </Col>
                 </Row>
