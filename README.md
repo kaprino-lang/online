@@ -1,9 +1,15 @@
 # Kaprino Online Compiler
 
-This is an online compiler which can run only one language - kaprino.  
-https://kaprino.herokuapp.com/
+![Build Github Pages](https://github.com/kaprino-lang/online/workflows/Build%20Github%20Pages/badge.svg)
+![Deploy Github Pages](https://github.com/kaprino-lang/online/workflows/Deploy%20Github%20Pages/badge.svg)
+![License](https://img.shields.io/github/license/kaprino-lang/kaprino)
 
-[What is kaprino?](https://github.com/kaprino-lang/kaprino)
+This is an online compiler for kaprino, which is a programming language of mathematical thinking.  
+Try kaprino easily and enjoy it!
+
+[Kaprino Online Compiler](https://kaprino-lang.github.io/online)
+
+[Kaprino main repository](https://github.com/kaprino-lang/kaprino)
 
 ## Description
 
